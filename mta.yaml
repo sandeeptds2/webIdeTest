@@ -1,0 +1,31 @@
+ID: teched_2018
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: furnitureshop_reviews_app
+   type: html5
+   path: furnitureshop_reviews_app
+   parameters:
+      disk-quota: 256M
+      memory: 256M
+   build-parameters:
+      builder: grunt
+   requires:
+    - name: uaa_teched_2018
+    - name: dest_teched_2018
+
+resources:
+  - name: uaa_teched_2018
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      shared: true
+    type: com.sap.xs.uaa
+
+  - name: dest_teched_2018
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: lite
+      service: destination
+      shared: true

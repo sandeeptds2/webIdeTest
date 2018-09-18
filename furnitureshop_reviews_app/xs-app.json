@@ -1,0 +1,39 @@
+{
+  "welcomeFile": "/furnitureshop_reviews_app/index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/furnitureshop_reviews_app/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    },
+    {
+      "source": "^/getWishList",
+      "target": "/products",
+      "csrfProtection": true,
+      "destination": "dest_ratings_and_comments"
+    },
+    {
+      "source": "^/putReviewComments/",
+      "target": "/products/",
+      "csrfProtection": true,
+      "destination": "dest_ratings_and_comments"
+    },
+    {
+      "source": "^/getReviewsList/",
+      "target": "/products/comments/",
+      "csrfProtection": true,
+      "destination": "dest_ratings_and_comments"
+    },
+    {
+      "source": "^/getUserInfo",
+      "target": "/getUserInfo",
+      "csrfProtection": true,
+      "destination": "dest_ratings_and_comments",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}
